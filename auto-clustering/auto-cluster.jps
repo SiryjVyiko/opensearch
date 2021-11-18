@@ -4,6 +4,7 @@ name: OpenSearch Stack
 id: opensearch
 logo: /images/logo.png
 
+targetNodes: none
 nodeGroupAlias:
   ${settings.nodeGroup}: nosqldb
   
