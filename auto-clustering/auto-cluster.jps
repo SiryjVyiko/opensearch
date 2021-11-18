@@ -3,6 +3,9 @@ jpsVersion: '1.9.1'
 name: OpenSearch Stack
 id: opensearch
 logo: /images/logo.png
+
+nodeGroupAlias:
+  ${settings.nodeGroup}: nosqldb
   
 description: 
   text:  OpenSearch stack with OpenSearch Dashboards and Logstash
