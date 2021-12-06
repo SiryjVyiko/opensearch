@@ -163,7 +163,9 @@ actions:
       
   setCapabilities:
     - cmd[odash]: |-
-        setcap 'cap_net_bind_service=+epi' /usr/share/opensearch-dashboards/bin/opensearch-dashboards-*
+        setcap 'cap_net_bind_service=+epi' /usr/share/opensearch-dashboards/bin/opensearch-dashboards
+        setcap 'cap_net_bind_service=+epi' /usr/share/opensearch-dashboards/bin/opensearch-dashboards-plugin
+        setcap 'cap_net_bind_service=+epi' /usr/share/opensearch-dashboards/bin/opensearch-dashboards-keystore
         setcap 'cap_net_bind_service=+epi' /usr/share/opensearch-dashboards/node/bin/node
       user: root
       
