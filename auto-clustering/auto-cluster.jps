@@ -4,6 +4,8 @@ name: OpenSearch Stack
 id: opensearch
 logo: /images/logo.png
 
+baseUrl: https://raw.githubusercontent.com/SiryjVyiko/opensearch/master/
+
 targetNodes: none
 nodeGroupAlias:
   ${settings.nodeGroup}: nosqldb
