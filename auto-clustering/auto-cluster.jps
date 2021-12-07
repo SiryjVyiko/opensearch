@@ -22,6 +22,11 @@ globals:
   
 onInstall:
   - clusterInit
+  - return:
+      success: |   
+        **Admin Panel**: [${nodes.nosqldb.master.url}:4848](${nodes.nosqldb.master.url}:4848)  
+        **User**: admin  
+        **Password**: ${globals.oSearchPswd}
         
 onAfterServiceScaleOut[lstash]:
   - setLogstashPassword
@@ -209,8 +214,3 @@ actions:
         sudo service opensearch start;
         retries=15; while [ $retries -gt 0 ]; do [[ $(curl -k -s -w "%{http_code}" https://localhost:9200/ -o /dev/null) != "401" ]] || break; sleep 10; let retries=${retries}-1; done
       user: root
-      
-success: |   
-  **Admin Panel**: [${nodes.nosqldb.master.url}:4848](${nodes.nosqldb.master.url}:4848)  
-  **User**: admin  
-  **Password**: ${globals.oSearchPswd}
