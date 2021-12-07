@@ -24,10 +24,11 @@ globals:
   
 onInstall:
   - clusterInit
-  - return:
-      type: success
-      message: /text/success.md
-      email: /text/success.md
+  - if ('${settings.success_email}' != 'false'):
+    - return:
+        type: success
+        message: /text/success.md
+        email: /text/success.md
       
 onAfterServiceScaleOut[lstash]:
   - setLogstashPassword
