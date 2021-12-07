@@ -120,6 +120,7 @@ actions:
       - setLogstashPassword
       - cmd[lstash]: |-
           sed -ci -e 's/hosts => .*/hosts =>  ["${nodes.nosqldb.master.address}"]/g' ${globals.lstashPipelineConfig};
+      - api[lstash]: environment.control.RestartNodesByGroup
     - forEach(osnode:nodes.nosqldb):
       - if (${@osnode.id} != ${nodes.nosqldb.master.id}):
          addNodeToCluster:
