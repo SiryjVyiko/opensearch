@@ -19,13 +19,11 @@ globals:
   oSearchConfig: /etc/opensearch/opensearch.yml
   oSearchDashConfig: /etc/opensearch-dashboards/opensearch_dashboards.yml
   lstashPipelineConfig: /etc/logstash/conf.d/logstash-sample.conf
+  success_email: ${settings.success_email:'/success/email.rd'}
+  success_text: ${settings.success_text:'/success/text.rd'}
   
 onInstall:
   - clusterInit
-  - return:
-      type: success
-      message: /text/success.md
-      email: /text/success.md
         
 onAfterServiceScaleOut[lstash]:
   - setLogstashPassword
@@ -213,3 +211,7 @@ actions:
         sudo service opensearch start;
         retries=15; while [ $retries -gt 0 ]; do [[ $(curl -k -s -w "%{http_code}" https://localhost:9200/ -o /dev/null) != "401" ]] || break; sleep 10; let retries=${retries}-1; done
       user: root
+    
+success:
+  email: ${globals.success_email}
+  text: ${globals.success_text}
